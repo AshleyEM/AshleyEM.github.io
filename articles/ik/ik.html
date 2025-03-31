@@ -197,10 +197,15 @@ table, td, th{
         <h2 id="overview">Overview</h2>
         <img src="intro.png">
         <p>
-            In 3D animation, an <b>armature</b> is a virtual skeleton that controls a character.
-            An <b>Inverse Kinematics (IK) solver</b> is an algorithm that helps with <b>posing</b> an armature.
-            Posing is rotating parts of the armature into certain positions, like standing or sitting.  
+            In 3D animation, an <b>armature</b> is a skeleton that controls a character's pose. It's similar to manipulating an action figure by rotating its limbs.
+            But unlike action figures, a 3D armature enforces a hierarchy of bone connections. As a result, you can't nudge the hand to move the rest of the arm; you 
+            must rotate each part of arm individually, starting from the shoulder. This is called <b>Forward Kinematics (FK).</b>
+            As you can imagine, FK is an inconvenient method to pose a character if its armature has many bones. Fortunately,
+            <b>Inverse Kinematics (IK)</b> is an algorithm that automatically positions multiple connected bones so that you only have to move one bone, like an action figure.  
          </p>  
+        <p>
+            This article explains both IK and FK.
+        </p>
          <h2 id="armature">Armature Kinematics</h2>
         <p>
             An armature is made of connected <b>bones</b>. Each bone is 
