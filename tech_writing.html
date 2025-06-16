@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Ashley's Tech Writing
+    </title>
+</head>
+
+<style>
+    a{
+        text-decoration: none;
+        color:aqua;
+    }
+    body{
+        background-color:rgb(43, 43, 43);
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .intro{
+        width: 800px;
+        color:silver;
+        padding:20px;
+        margin-bottom: 50px;
+        font-family: sans-serif;
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .article_menu{
+        width:800px;
+        padding: 5px;
+    }
+    .article_banner{
+        background-color: rgb(66, 66, 66);
+        border: 1px solid rgb(99, 99, 99);
+        display: flex;
+        width: 800px;
+        height: 200px;
+        margin-bottom: 8px;
+        text-decoration: none;
+        
+    }
+
+    .article_banner:hover{
+        background-color: rgb(101, 101, 101);
+    }
+    .article_title{
+        width: 550px;
+        color:silver;
+        font-family: sans-serif;
+        margin-left: 20px;
+    }
+    .article_img{
+        object-fit: contain;
+        margin-left: auto;
+        width:200px;
+        height:200px;
+    }
+
+    #my_name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        color: silver;
+        background-color: rgb(31, 31, 31);
+        width: 100%;
+        height: 100px;
+    }
+</style>
+
+<body> 
+<h1 id="my_name">Ashley McLemore</h1>
+<div class="intro">
+    <p>My name is Ashley McLemore. I am a Computer Science graduate with an interest in techincal writing and software development. 
+        Below are a few samples of my work.
+    </p>
+    <p> You can also few my <a href="https://github.com/AshleyEM"><b>GitHub profile</b></a>. </p>
+</div>
+
+<div class="article_menu">
+    
+    <a class="article_banner" href="articles/ik/ik.html">
+        <div class="article_title">
+            <h2>Armatures in Blender: What is IK and FK?</h2>
+            &nbsp;
+            <p>Explaining the mechanics of an armature in Blender.</p>
+        </div>
+        <img class="article_img" src="articles/ik_icon.png">
+    </a>
+    <a class="article_banner" href="https://github.com/AshleyEM/slither-addon?tab=readme-ov-file#readme">
+        <div class="article_title">
+            <h2>How To Use the Slither Addon</h2>
+            &nbsp;
+            <p>The Slither Addon is a Blender plugin that automatically generates slithering animations for selected bones.</p>
+        </div>
+        <img class="article_img" src="articles/slither_icon.png">
+    </a>
+    <a class="article_banner" href="articles/mouselook/mouselook.html">
+        <div class="article_title">
+            <h2>Mouselook In Unity</h2>
+            &nbsp;
+            <p>Creating a 2D mouselook controls in Unity.</p>
+        </div>
+        <img class="article_img" src="articles/mouselook_icon.png">
+    </a>
+    <a class="article_banner" href="articles/reminders/reminders.html">
+        <div class="article_title">
+            <h2>How To Use Reminders</h2>
+            &nbsp;
+            <p>A tutorial explaining how to use the Reminders app on macOS.</p>
+        </div>
+        <img class="article_img" src="articles/reminders_icon.png">
+    </a>
+
+</div>
+
+</body>
+</html>
