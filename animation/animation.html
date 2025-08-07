@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Ashley's Portfolio
+    </title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<style>
+    .thumbnail{
+        width:500px;
+    }
+    .thumbnail:hover{
+        cursor: pointer;
+        opacity:80%;
+    }
+    #video-popup{
+        display:none;
+        text-align: center;
+        position: fixed;
+        width:100%;
+        top:0;
+        background-color: black;
+        height: 500px;
+    }
+    #video{
+        height: 500px;
+        width: 800px;
+    }
+     #close-popup{
+        color: silver;
+        font-family: sans-serif;
+        cursor: pointer;
+        float:left;
+        font-size: 30px;
+        padding:20px;
+    }
+    #gallery{
+        margin: 0 auto;
+        border-spacing: 20px;
+        font-family: sans-serif;
+        background-color: white;
+        border: 4px double rgb(130, 130, 130);
+    }
+
+</style>
+
+<body> 
+
+<div id="header-grid">
+    <a id="logo-wrapper" href="../index.html" style="grid-area: a;" >
+        <img id="logo" src="../logo.png">
+    </a>
+    <div class="textbox" style="grid-area: b;">
+       Some examples of animations I've made using Blender.
+    </div>
+</div>
+
+<!--hidden-->
+<div id="video-popup">
+    <div id="close-popup" onclick="closePopup()">X</div>
+    <iframe id="video" src="" 
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+    picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+    </iframe>
+</div>
+
+<table id="gallery">
+    <tr>
+         <td>
+            <img class="thumbnail" src="t_shoot_settings.jpg" onclick="videoPopup('https://www.youtube.com/embed/4YCkVOflH5I?si=J5Qlb414vJl9YWBs')"/> 
+        </td>
+        <td>
+            An inventor struggles to remove a rattlesnake with his modified revolver.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img class="thumbnail" src="t_infinite_carousel.png" onclick="videoPopup('https://www.youtube.com/embed/abwjmxH3fgU?si=nPUAaK3njMyk9GIj')"/> 
+        </td>
+        <td>A magic orb thing creates an infinite carousel.</td>
+    </tr>
+
+     <tr>
+        <td>
+            <img class="thumbnail" src="t_the_hivemind.png" onclick="videoPopup('https://www.youtube.com/embed/a9B0jdmOODc?si=a1W3_PerD97sP30h')"/> 
+        </td>
+         <td>
+            Weird guy who controls a hivemind of drones in his fancy castle.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <img class="thumbnail" href="#" src="t_deer.png" onclick="videoPopup('https://www.youtube.com/embed/hCs0uP3LHu0?si=aOBXWwTq9eVB8_oc')"/> 
+        </td>
+        <td>
+            Mimicking a 2D vintage style animation in Blender.
+        </td>
+    </tr>
+
+
+</table>
+
+<script>
+
+    function videoPopup(url){
+        var popup = document.getElementById("video-popup");
+        var video = document.getElementById("video");
+        video.src = url; 
+        popup.style.display = "block";
+    }
+
+    function closePopup(){
+        var popup = document.getElementById("video-popup");
+        var video = document.getElementById("video");
+        popup.style.display = "none";
+        video.src = ""; 
+    }
+
+</script>
+
+
+</body>
+</html>

@@ -2,98 +2,71 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="style.css">
     <title>
         Ashley's Portfolio
     </title>
 </head>
 
 <style>
-    a{
-        text-decoration: none;
-        color:aqua;
-    }
-    body{
-        background-color:rgb(54, 54, 54);
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-    
-    #my_name {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: sans-serif;
-        font-size: 24px;
-        font-weight: 100;
-        color: silver;
-    }
 
-    .table_cell{
-        width: 150px;
-        padding:10px;
-        background-color: rgb(31, 31, 31);
-        text-align: center;
-        font-family: sans-serif;
-        color:silver;
-        border-style: outset;
-        border-color: rgb(68, 68, 68);
-        border-width: 2px;
-    }
+#nav{
+    font-family: sans-serif;
+    color: silver;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    align-items: center;
+    text-align: center;
+}
+.link{
+    color: rgb(0, 0, 0);
+    padding:10px;
+    margin:5px;
+    width: 200px;
+    border: 1px solid black;
+    background-color: white;
+}
+.link:hover{
+    font-weight: 600;
+    border: 2px solid black;
+}
 
-    .table_cell:hover{
-          border-style: inset;
-    }
-
-    #intro{
-        width: 220px;
-        border: 1px solid rgb(116, 116, 116);
-        text-align: center;
-        padding: 40px;
-        margin: 20px;
-        color: silver;
-        font-family: sans-serif;
-        line-height: 30px;
-    }
+#socials a{
+    border-radius: 5px;
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 8px;
+    font-size: 14px;
+    font-family: sans-serif;
+}
 
 </style>
 
 <body> 
-<a href="index.html">
-    <img style="border-radius: 50%; width: 150px;" src="logo.png">
-</a>
 
-<h1 id="my_name">Ashley McLemore</h1>
+<div id="header-grid">
+    <div id="socials">
+        <a href="https://www.artstation.com/ashem" style="background-color: rgb(40, 123, 191);">ArtStation</a>
+        <a href="https://github.com/AshleyEM" style="background-color: rgb(37, 37, 37);">GitHub</a>
+        <a href="https://www.youtube.com/@LowRentWitchcraft" style="background-color: rgb(215, 38, 38);">YouTube</a>
+    </div>
 
-<div id="intro">
-    I like too many things, so I put them all here. 
+    <a id="logo-wrapper" href="index.html" style="grid-area: b;" >
+        <img id="logo" src="logo.png">
+    </a>
+
+    <div class="textbox" style="grid-area: e;">
+        My name is Ashley (or Ashe). I make cartoons and sometimes I'm good at it. 
+    </div>
 </div>
 
-<table>
-
-    <tr>
-        
-        <td>
-            <a href="3d.html">    
-                <div class="table_cell">3D Work</div>
-            </a>
-        </td>
-        <td>
-            <a href="tech_writing.html">    
-                <div class="table_cell">Technical Writing</div>
-            </a>
-        </td>
-        <td>
-            <a href="https://github.com/AshleyEM">    
-                <div class="table_cell">GitHub</div>
-            </a>
-        </td>
-        
-    </tr>
-
-</table>
-
+<div id="nav">
+    <a class="link" href="comics/comics.html">Low Rent Witchcraft Comics</a>
+    <a class="link" href="animation/animation.html">Animation</a>
+    <a class="link" href="tech_writing/tech_writing.html">Technical Writing</a>
+</div>
 
 
 </body>

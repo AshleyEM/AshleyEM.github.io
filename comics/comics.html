@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <title>
+       Low Rent Witchcraft
+    </title>
+</head>
+
+<style>
+    a{
+        text-decoration: none;
+        color:black;
+    }
+    #gallery{
+        padding:20px;
+        margin: 0 auto;
+        border-spacing: 10px;
+    }
+    #gallery td{
+        width: 100px;
+        text-align: center;
+    }
+    #gallery p{
+        font-family: sans-serif;
+        font-size: 20px;
+    }
+    .gallery-item img{
+        border: 1px solid black;
+    }
+    .gallery-item img:hover{
+        opacity: 0.8;;
+    }
+    #popup{
+        display:none;
+    }
+    #lrw-logo{
+        background-image: url("lrw.png");
+        background-size: contain;
+        height: 200px;
+        width: 400px;
+        place-self: center;
+    }
+
+</style>
+
+<body> 
+
+<div id="header-grid">
+    <div id="lrw-logo" style="grid-area: b;"></div>
+    <a id="logo-wrapper" href="../index.html" style="grid-area: a; place-self:start;" >
+        <img id="logo" src="../logo.png" style="width: 100px;">
+    </a>
+    <div class="textbox" style="grid-area: e; text-align: center;">
+        Comics about the eldritch and the boring.
+    </div>
+</div>
+
+<table id="gallery">
+    <tr>
+        <td>
+            <a href="view_comic.html" onclick="view_comic('Traditional Family Values', 'traditional_family_values.jpg')">
+                <div class="gallery-item">
+                    <img src="t_traditional_family_values.jpg">
+                    <p>Traditional Family Values</p>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a href="view_comic.html" onclick="view_comic('Perspective', 'perspective.png')">
+                <div class="gallery-item">
+                    <img src="t_perspective.png">
+                    <p>Perspective</p>
+                </div>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<script>
+
+    // when the user clicks a comic, send the TITLE and IMG URL to view_comic.html
+
+    function view_comic(title, url){
+        localStorage.setItem("title", title);
+        localStorage.setItem("url", url);
+    }
+  
+
+</script>
+
+
+</body>
+</html>

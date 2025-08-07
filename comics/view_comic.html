@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="../style.css">
+    <title>
+        Ashley's Portfolio
+    </title>
+</head>
+
+<style>
+    #title{
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 24px;
+    }
+    #comic{
+        width: 800px;
+        display: block;
+        margin: 0 auto;
+        border: 2px solid black;
+    }
+    #lrw-logo{
+        background-image: url("lrw.png");
+        background-size: contain;
+        height: 200px;
+        width: 400px;
+        place-self: center;
+    }
+
+</style>
+
+<body> 
+
+<div id="header-grid">
+    <div id="lrw-logo" style="grid-area: b;"></div>
+    <a href="comics.html" style="grid-area: a; font-size: 40px; text-align: center; text-decoration: none; color:black;">
+        &#9664
+    </a>
+</div>
+
+<p id="title"></p>
+<img id="comic" src="">
+
+<script>
+
+    var title = localStorage.getItem("title");
+    var url = localStorage.getItem("url");
+    document.getElementById("title").innerText = title;
+    document.getElementById("comic").src = url;
+
+</script>
+
+
+</body>
+</html>
