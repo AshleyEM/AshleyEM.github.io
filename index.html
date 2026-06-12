@@ -1,118 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Comic Gallery</title>
-  <link rel="stylesheet" href="style.css" />
+    <title>
+        Ashley's Tech Writing
+    </title>
 </head>
-<body>
 
-  <div id="header_container">
-    <div id="nav">
-      <a href="https://www.youtube.com/@LowRentWitchcraft">YouTube</a>
-      <a href="https://www.artstation.com/ashem">ArtStation</a>
-    </div>
-    <a id="banner" href="index.html">
-      <img src="lrw.png"/>
+<style>
+    a{
+        text-decoration: none;
+        color:aqua;
+    }
+    body{
+        background-color:rgb(43, 43, 43);
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .intro{
+        width: 800px;
+        color:silver;
+        padding:20px;
+        margin-bottom: 50px;
+        font-family: sans-serif;
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .article_menu{
+        width:800px;
+        padding: 5px;
+    }
+    .article_banner{
+        background-color: rgb(66, 66, 66);
+        border: 1px solid rgb(99, 99, 99);
+        display: flex;
+        width: 800px;
+        height: 200px;
+        margin-bottom: 8px;
+        text-decoration: none;
+        
+    }
+
+    .article_banner:hover{
+        background-color: rgb(101, 101, 101);
+    }
+    .article_title{
+        width: 550px;
+        color:silver;
+        font-family: sans-serif;
+        margin-left: 20px;
+    }
+    .article_img{
+        object-fit: contain;
+        margin-left: auto;
+        width:200px;
+        height:200px;
+    }
+
+    #my_name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        color: silver;
+        background-color: rgb(31, 31, 31);
+        width: 100%;
+        height: 100px;
+    }
+</style>
+
+<body> 
+<h1 id="my_name">Ashley McLemore</h1>
+<div class="intro">
+    <p>My name is Ashley. I am a content creator with an interest in Technical Writing, 3D Graphics, 
+        and Computer Science. Below are a few samples of my writing.</p>
+
+    <p> You can also few my <a href="https://github.com/AshleyEM">GitHub</a> and my <a href="https://www.artstation.com/ashem">ArtStation</a>. </p>
+</div>
+
+<div class="article_menu">
+    
+    <a class="article_banner" href="ik/ik.html">
+        <div class="article_title">
+            <h2>Armatures in Blender: What is IK and FK?</h2>
+            &nbsp;
+            <p>Explaining the mechanics of an armature in Blender.</p>
+        </div>
+        <img class="article_img" src="ik_icon.png">
     </a>
-  </div>
+    <a class="article_banner" href="https://github.com/AshleyEM/slither-addon?tab=readme-ov-file#readme">
+        <div class="article_title">
+            <h2>How To Use the Slither Addon</h2>
+            &nbsp;
+            <p>The Slither Addon is a Blender plugin that automatically generates slithering animations for selected bones.</p>
+        </div>
+        <img class="article_img" src="slither_icon.png">
+    </a>
+    <a class="article_banner" href="mouselook/mouselook.html">
+        <div class="article_title">
+            <h2>Mouselook In Unity</h2>
+            &nbsp;
+            <p>Creating a 2D mouselook controls in Unity.</p>
+        </div>
+        <img class="article_img" src="mouselook_icon.png">
+    </a>
+    <a class="article_banner" href="reminders/reminders.html">
+        <div class="article_title">
+            <h2>How To Use Reminders</h2>
+            &nbsp;
+            <p>A tutorial explaining how to use the Reminders app on macOS.</p>
+        </div>
+        <img class="article_img" src="reminders_icon.png">
+    </a>
 
-  <div id="gallery">
-
-
-    <div class="card" data-id="resume_gap">
-        <img src="comics/resume_gap/preview.png"/>
-        <h3>Résumé Gap</h3>
-    </div>
-
-    <div class="card" data-id="lucy's_friend">
-        <img src="comics/lucy's_friend/preview.png"/>
-        <h3>Lucy's Friend</h3>
-    </div>
-
-    <div class="card" data-id="traditional_family_values">
-        <img src="comics/traditional_family_values/preview.jpg"/>
-        <h3>Traditional Family Values</h3>
-    </div>
-
-    <div class="card" data-id="perspective">
-        <img src="comics/perspective/preview.png"/>
-        <h3>Perspective</h3>
-    </div>
-
-
-
-  </div>    
-
-  <!--Hidden, used for single comic-->
-  <div id="reader">
-
-    <div id="pages_container">
-      <!--will be populated with comic pages-->
-    </div>
-  </div>
+</div>
 
 </body>
-
-
-<script type="module">
-
-// ==============================
-// This reads from a JSON file, which means you can't
-// run this by just opening index.html. You need a server.
-// Use Live Server extension for VS Code. 
-// In VS Code's file explorer, right click index.html > Open with Live Server.
-// Github Pages already uses a server. This precaution is just for local development.
-// ==============================
-
-var gallery = document.getElementById("gallery");
-var reader = document.getElementById("reader");
-var pages_container = document.getElementById("pages_container");
-
-// (1)----- Get data from comics.json -----
-let comicsData = [];
-
-const response = await fetch('./comics.json');
-if (response.ok) {
-  comicsData = await response.json();
-  console.log('Loaded:', comicsData);
-} else {
-  console.error('Failed to load data');
-}
-
-// (2)----- Attach event listener to each comic card ------
-// When a card is clicked, data-id is fed into readComic()
-// data-id = 'title' in JSON file
-document.addEventListener('click', function (event) {
-  const card = event.target.closest('.card');
-  if (card && !event.target.classList.contains('prevent-default')) {
-    readComic(card.dataset.id); // render comic pages
-  }
-});
-
-// (3) ----- When card is clicked, render pages of 1 comic ---
-function readComic(title){
-
-  // Hide gallery, show reader
-  gallery.style.display = 'none';
-  reader.style.display = 'block';
-
-  console.log(title);
-  // Get comic pages
-  const pages = comicsData[title].pages;
-
-  // Render comic pages
-  let readerHtml = '';
-  for (let i = 0; i < pages.length; i++){
-    readerHtml += `
-    <div class="page">
-      <img src="${pages[i]}"/>
-    </div>
-    `
-  }
-  pages_container.innerHTML += readerHtml;
-}
-
-
-</script>
 </html>
