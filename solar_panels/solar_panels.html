@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Inverse Kinematics (IK) in Blender
+    </title>
+</head>
+
+<style>
+
+a{
+    text-decoration:none;
+    color: silver;
+}
+
+body{
+    background-color:rgb(43, 43, 43);
+    margin:0;
+}
+article{
+    margin-right:4em;
+    padding-right:6em;
+    padding-left:6em;
+    border-right: 1px solid rgb(90, 90, 90);
+    border-left: 1px solid rgb(90, 90, 90);
+}
+
+#home{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 4em;
+    padding-left: 1em;
+    font-family: sans-serif;
+    background-color: rgb(63, 63, 63);
+    color:white;
+    margin-bottom: 2em;
+}
+
+
+.nav_container{
+    display:flex;
+    padding:4px;
+    flex-direction: column;
+}
+
+.nav{
+    width:20em;
+    padding:4px;
+}
+.nav li{
+    text-decoration:none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:16px;
+    border-bottom:1px solid rgb(90, 90, 90);
+    padding:0.4em;
+    padding-left:4em;
+}
+
+.nav li:hover{
+    background-color:rgb(84, 84, 84);
+}
+.nav ul{
+    padding:0;
+}
+
+h1{
+    font-family:sans-serif;
+    font-size:40px;
+    color:rgb(201, 201, 201);
+    font-weight: 100;
+}
+
+h2{
+    margin-top:2em;
+    font-family:sans-serif;
+    font-size:24px;
+    color:rgb(201, 201, 201);
+    font-weight:100;
+    width:100%;
+    border-bottom:1px solid rgb(90, 90, 90);
+    padding:6px;
+}
+
+p, li{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color:rgb(201, 201, 201);
+    line-height:1.6;
+}
+
+.li_step{
+    padding:6px;
+    list-style:square;
+}
+
+img{
+    display:inline-block;
+    box-shadow:5px 10px 10px rgba(10,10,10,0.5);
+    margin-bottom:1em;
+    max-width: 100%;
+}
+
+.step{
+    padding-left:10px;
+    width:100%;
+    margin:auto;
+    margin-bottom: 2em;
+    border-left:1px solid rgb(92, 92, 92);
+}
+
+.step_n{
+    color:silver;
+    font-weight: bold;
+    font-size:28px;
+    border-radius: 100%;
+    padding-right:12px;
+    padding-left:12px;
+    padding-top:6px;
+    padding-bottom:4px;
+    margin-right:1em;
+}
+
+code{
+    color:rgb(120, 209, 250);
+    padding-top:2px;
+    padding-left:4px;
+    padding-right:4px;
+    border-radius:2px;
+    font-size:16px;
+    border-top:1px solid rgb(140, 140, 140);
+    border-right:1px solid rgb(140, 140, 140);
+    border-bottom:1px solid rgb(0, 0, 0);
+    border-left:1px solid rgb(0, 0, 0);
+}
+
+.key{
+    display:inline;
+    background-color:rgb(191, 191, 191);
+    color:rgb(0, 0, 0);
+    padding-left:6px;
+    padding-right:6px;
+    padding-top:2px;
+    border-radius: 2px;
+    font-size:14px;
+    border-top: 2px solid rgb(230, 230, 230);
+    border-bottom: 2px solid rgb(123, 123, 123);
+}
+
+#logo{
+        width:5em;
+        height:8em;
+        background-image: url('../logo.png');
+        background-size:cover;
+        align-self: center;
+        margin-top:1em;
+        margin-bottom: 1em;
+    }
+
+.c{
+    border:none;
+    color:silver;
+}
+
+table, td, th{
+    border:1px solid silver;
+    border-collapse: collapse;
+    font-family:monospace;
+    font-size: 14px;
+    color:rgb(201, 201, 201);
+    line-height:1.6;
+    padding:6px;
+}
+</style>
+
+<body> 
+<a id="home" href="../index.html">&larr; Home</a>
+
+
+    <article>
+        <h1>Solar Energy In Bangladesh</h1>
+
+        <p>
+            Bangladesh is a small country residing in South Asia, east of India. It has a
+            population of about 163 million with more than half of its citizens living in
+            rural regions (World Bank, 2019a; World Bank, 2019c).
+            While electric power consumption in Bangladesh has risen exponentially in
+            the past decade, more than one-fourth of the rural population remains
+            without electricity (World Bank, 2019b; Hutt, 2020).
+         </p>  
+         <h2>Solar Energy</h2>
+         <p>
+            Solar energy is emerging as a common source of power for homes and
+            industries in Bangladesh. About one-eighth of the population relies on solar
+            energy.
+            For rural, off-grid communities, the availability of light during dark hours has
+            extended productivity. Work can continue into the night and children have
+            additional time to study. Solar energy has also increased the demand for
+            electric-powered home utilities and replaced old agricultural methods with
+            solar irrigation (Hutt, 2020).
+         </p>
+         <h2>Photovoltaic (PV) Cells</h2>
+         <p>
+            Solar cells, or photovoltaic (PV) cells, generate an electric current when
+            exposed to sunlight. Multiple cells can be placed in a series to increase
+            electrical output (Kalogirou, 2014).
+            A PV cell contains layers of a crystallized semiconductor element, such as
+            silicon. Pure semiconductor materials do not have an electric charge until it
+            has been ‘doped’ with an impurity. Two doped semiconductor layers of
+            opposite charges are stacked together inside the cell to generate an
+            electric field (Largent & Wenham, 2003).
+            The semiconductor layers within a PV cell produce an electric current
+            through the following process:
+        </p>
+            <ol>
+                <li>Sunlight makes contact with the PV cell.</li>
+                <li>
+                    Light within a certain wavelength dislodges the electrons within the
+                    cell’s semiconductor material and generates current.
+                </li>
+                <li>
+                    The electric field between the positive and negative layers acts as a
+                    diode and forces the current to flow in one direction (Kalogirou,
+                    2014; Aldous, 2020).
+                </li>
+            </ol>
+            <h2>Advantages and Disadvantages of PV Cells</h2>
+            <p>
+                PV cells provide the following advantages in Bangladesh:
+            </p>
+            <ul>
+                <li>
+                    The availability of electricity in rural areas reduces urban migration
+                    and can minimize the urban-rural divide.
+                </li>
+                <li>
+                    PV cells are adaptable to off-grid infrastructures and harsh climates.
+                </li>
+                <li>
+                    PV cells provide a free source of renewable energy without any moving
+                    parts or pollutants (Kalogirou, 2014).
+                </li>
+            </ul>
+
+            <p>PV cells also have the following disadvantages:</p>
+            <ul>
+                <li>Solar plants are expensive to build.</li>
+                <li>
+                    Solar plants require large spaces and are difficult to place in densely
+                    populated areas of Bangladesh (Islam, 2018).
+                </li>
+                <li>
+                    Most PV cells absorb solar radiation within a very narrow spectrum.
+                    One-fourth of the absorbed energy is converted into electricity (George
+                    Washington University, 2017; Kalogirou, 2014).
+                </li>
+            </ul>
+            <h2>The Future of Solar Energy in Bangladesh</h2>
+            <p>
+                As Bangladesh’s demand for energy rises, so does the demand for fossil
+                fuels (Islam, 2018). Meeting the energy demand with renewable sources
+                remains a challenge. However, the country has one of the most expansive
+                solar energy programs in the world, and the efficiency of photovoltaic
+                systems continues to improve (Hutt, 2020; George Washington University,
+                2017).
+            </p>
+            <h2>Sources</h2>
+            <em>
+            <p>
+                Aldous, J. T. S. (2020, June 30). How Solar Cells Work. HowStuffWorks.
+                https://science.howstuffworks.com/environmental/energy/solar-cell.htm#pt1
+            </p>
+            <p>
+                George Washington University. (2017, July 11). Scientists design solar cell
+                that captures nearly all energy of solar spectrum. ScienceDaily. https://
+                www.sciencedaily.com/releases/2017/07/170711220514.html
+            </p>
+            <p>
+                Hutt Rosamond Hutt, R. (2020, January 13). Life for millions in Bangladesh
+                is being transformed thanks to this simple solution. Retrieved August
+                03, 2020, from https://www.weforum.org/agenda/2020/01/
+                bangladesh-solar-power-energy-grid-rural-life/
+            </p>
+            <p>
+                Islam, S. (2018, October 16). With solar farms and roof panels, Bangladesh
+                inches toward green power goal. U.S. https://www.reuters.com/article/us-
+                bangladesh-renewables-climatechange/with-solar-farms-and-roof-panels-
+                bangladesh-inches-toward-green-power-goal-idUSKCN1MQ05I
+            </p>
+            <p>
+                Kalogirou, S. A. (2013). Solar Energy Engineering: Processes and Systems
+                (2nd ed.). Academic Press.
+            </p>
+            <p>
+                Largent, R., & Wenham, S. (2003). Solar Cells: Resource for the
+                Secondary Science Teacher. Key Centre for Photovoltaic Engineering,
+                University of New South Wales, Faculty of Engineering.
+            </p>
+            <p>
+                World Bank. (2019a). Bangladesh | Data. Worldbank.Org. https://
+                data.worldbank.org/country/bangladesh
+            </p>
+            <p>
+                World Bank. (2019b). Electric power consumption (kWh per capita) -
+                Bangladesh | Data. Worldbank.Org. https://data.worldbank.org/indicator/
+                EG.USE.ELEC.KH.PC?locations=BD
+            </p>
+            <p>
+                World Bank. (2019c). Rural population | Data. Worldbank.Org. https://
+                data.worldbank.org/indicator/SP.RUR.TOTL?locations
+            </p>
+            </em>
+    </article>
+
+</div>
+
+</body>
+</html>
